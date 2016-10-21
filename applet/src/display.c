@@ -40,7 +40,11 @@ const gfx_bitmap bmp_eye = {12, 12, 6, 4, eye_pix, &eye_pal, 0};
 void draw_eye_opt()
 {
     if( global_addl_config.promtg == 1 ) {
+#ifdef FW_S13_020
+        gfx_drawbmp((char *) &bmp_eye, 20, 1);
+#else
         gfx_drawbmp((char *) &bmp_eye, 65, 1);
+#endif
     }
 }
 
