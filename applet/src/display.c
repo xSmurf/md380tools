@@ -196,7 +196,9 @@ void draw_rx_screen(unsigned int bg_color)
     OS_EXIT_CRITICAL(primask);
     
     if( find_dmr_user(buf, src, (void *) 0x100000, BSIZE) == 0 ) {
-        sprintf(buf, ",ID not found,in users.csv,see README.md,on Github"); // , is line seperator ;)
+        gfx_select_font(gfx_font_norm);
+        sprintf(buf, ",ID not found,in users.csv");
+        gfx_select_font(gfx_font_small);
     }
     buf[BSIZE-1] = 0 ;
     
