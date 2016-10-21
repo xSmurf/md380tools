@@ -41,6 +41,9 @@ if __name__ == '__main__':
     patcher.setwstring(0x080d0b6c,
                        "MD380Tools Ver.");
 
+    patcher.setwstring(0x80f9a94,
+                       "No Fix");
+
 #     #Change the manufacturer string.
 #     patcher.setstring(0x080f86c8,
 #                       "Travis Goodspeed KK4VCZ");
