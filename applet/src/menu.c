@@ -1006,23 +1006,20 @@ void create_menu_entry_addl_functions_screen(void)
 //    md380_create_menu_entry(md380_menu_id + 9, wt_netmon, create_menu_entry_netmon_screen + 1, md380_menu_entry_back + 1, 0x98, 0, 1);
 //#endif
 
+    mn_submenu_add_98(wt_promtg, create_menu_entry_promtg_screen);
+    mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
     mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
+    mn_submenu_add(wt_backlight, mn_backlight);
     mn_submenu_add_98(wt_bootscr, create_menu_entry_bootscr_screen);
     mn_submenu_add_98(wt_datef, create_menu_entry_datef_screen);
     mn_submenu_add_98(wt_userscsv, create_menu_entry_userscsv_screen);
-    mn_submenu_add_98(wt_debug, create_menu_entry_debug_screen);
-    mn_submenu_add_98(wt_promtg, create_menu_entry_promtg_screen);
     mn_submenu_add_8a(wt_edit, create_menu_entry_edit_screen, 0); // disable this menu entry - no function jet
     mn_submenu_add_8a(wt_edit_dmr_id, create_menu_entry_edit_dmr_id_screen, 1);
-    mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
     mn_submenu_add_8a(wt_experimental, create_menu_entry_experimental_screen, 1);
-    
-//    if( global_addl_config.experimental ) {
-        mn_submenu_add(wt_backlight, mn_backlight);
-//    }
-    
+    mn_submenu_add_98(wt_debug, create_menu_entry_debug_screen);
+#ifdef FW_D13_020
     mn_submenu_add_98(wt_netmon, create_menu_entry_netmon_screen);
-    
+#endif
     mn_submenu_finalize2();
 }
 
