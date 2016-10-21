@@ -1040,8 +1040,8 @@ void create_menu_entry_addl_functions_screen(void)
 
     mn_submenu_add_98(wt_promtg, create_menu_entry_promtg_screen);
     mn_submenu_add(wt_backlight, mn_backlight);
-    mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
     mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
+    mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
     mn_submenu_add(wt_bootopts, create_menu_entry_bootopts_screen);
     mn_submenu_add_98(wt_datef, create_menu_entry_datef_screen);
     mn_submenu_add_98(wt_userscsv, create_menu_entry_userscsv_screen);
