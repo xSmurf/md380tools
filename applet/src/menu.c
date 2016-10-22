@@ -1038,20 +1038,6 @@ void create_menu_utilies_hook(void)
         enabled = 1;
     }
 
-#ifdef DEBUG
-//    printf("create_menu_utilies_hook %d\n", md380_menu_depth);
-
-#if 0
-// TODO: move to somewhere else    
-    radio_config_t *rc = &md380_radio_config;
-    printf("backlight %x\n", rc->backlight_time);
-    printf("dmr %d\n", rc->dmrid);
-    printf("mode_ch %d\n", rc->mode_ch_mr);
-#endif
-    
-    //   printf("menu_mem->numberof_menu_entries %d\n",menu_mem->numberof_menu_entries);
-#endif
-
     menu_mem = get_menu_stackpoi();
     menu_mem->unknownp = &md380_menu_mem_base[md380_menu_id];
     //  menu_mem->numberof_menu_entries++;
