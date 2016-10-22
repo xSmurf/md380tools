@@ -197,7 +197,7 @@ void draw_rx_screen(unsigned int bg_color)
     
     if( find_dmr_user(buf, src, (void *) 0x100000, BSIZE) == 0 ) {
         gfx_select_font(gfx_font_norm);
-        sprintf(buf, ",ID not found,in users.csv");
+        sprintf(buf, ",ID not found"); // , is line seperator ;)
         gfx_select_font(gfx_font_small);
     }
     buf[BSIZE-1] = 0 ;

@@ -78,6 +78,6 @@ if __name__ == '__main__':
                       "Travis Goodspeed KK4VCZ");
     #Change the device name.
     patcher.setstring(0x080cfff4,
-                      "Patched MD380");
+                      "Patched MD-380/390");
 
     patcher.export("patched.img")

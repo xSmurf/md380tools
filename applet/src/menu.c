@@ -227,9 +227,13 @@ void create_menu_entry_rev(int menuid, const wchar_t * label , void (*green_key)
     poi->off13 = f ;
     poi->item_count = item_count ;
     
+// supress language menu.
 #ifdef FW_D13_020
-    // supress language menu.
     if( green_key == (void*)(0x801ab84 + 1) ) {
+        poi->item_count = 0 ;
+    }
+#elif defined(FW_S13_020)
+    if( green_key == (void*)(0x801acac + 1) ) {
         poi->item_count = 0 ;
     }
 #else
@@ -1007,9 +1011,9 @@ void create_menu_entry_addl_functions_screen(void)
 //#endif
 
     mn_submenu_add_98(wt_promtg, create_menu_entry_promtg_screen);
-    mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
-    mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
     mn_submenu_add(wt_backlight, mn_backlight);
+    mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
+    mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
     mn_submenu_add_98(wt_bootscr, create_menu_entry_bootscr_screen);
     mn_submenu_add_98(wt_datef, create_menu_entry_datef_screen);
     mn_submenu_add_98(wt_userscsv, create_menu_entry_userscsv_screen);
@@ -1017,7 +1021,7 @@ void create_menu_entry_addl_functions_screen(void)
     mn_submenu_add_8a(wt_edit_dmr_id, create_menu_entry_edit_dmr_id_screen, 1);
     mn_submenu_add_8a(wt_experimental, create_menu_entry_experimental_screen, 1);
     mn_submenu_add_98(wt_debug, create_menu_entry_debug_screen);
-#ifdef FW_D13_020
+#if defined(FW_D13_020)
     mn_submenu_add_98(wt_netmon, create_menu_entry_netmon_screen);
 #endif
     mn_submenu_finalize2();
