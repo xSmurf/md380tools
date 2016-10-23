@@ -547,7 +547,7 @@ void create_menu_entry_userscsv_enable_screen(void)
 
     cfg_save();
 
-    set_radio_name();
+    cfg_set_radio_name();
 }
 
 void create_menu_entry_userscsv_disable_screen(void)
@@ -880,35 +880,6 @@ void create_menu_entry_edit_screen(void)
 #endif
 }
 
-void set_radio_name()
-{
-    char callsign[10] = {0x00};
-
-    if (get_dmr_user_field(2, callsign, global_addl_config.dmrid, 10) == 0) {
-        strncpy(callsign, "UNKNOWNID", 10);
-    }
-
-    for (uint8_t ii = 0 ; ii < 20; ii++) {
-        toplinetext[ii] = 0x00;
-        if (ii%2 == 0) {
-            toplinetext[ii] = callsign[ii/2];
-        }
-    }
-
-    for (uint8_t ii = 0 ; ii < 32; ii++) {
-        if (ii%2 == 0 && ii < 20) {
-            md380_radio_config.radioname[ii] = callsign[ii/2];
-            global_addl_config.rname[ii] = callsign[ii/2];
-        } else {
-            md380_radio_config.radioname[ii] = 0x00;
-            global_addl_config.rname[ii] = 0x00;
-        }
-    }
-
-    cfg_save();
-    md380_spiflash_write(&md380_radio_config.radioname, FLASH_OFFSET_RNAME, 4);
-}
-
 void create_menu_entry_edit_dmr_id_screen_store(void)
 {
     uint32_t new_dmr_id = 0;
@@ -925,6 +896,11 @@ void create_menu_entry_edit_dmr_id_screen_store(void)
         new_dmr_id *= 10;
         new_dmr_id += (*bf++) - '0';
     }
+    
+    if ( new_dmr_id > 0xffffff ) {
+        return;
+    }
+    
 #if 0
     printf("\n%d\n", new_dmr_id);
 #endif
@@ -938,7 +914,7 @@ void create_menu_entry_edit_dmr_id_screen_store(void)
     md380_menu_depth = md380_menu_depth - 1;
 
     if (global_addl_config.userscsv == 1) {
-        set_radio_name();
+        cfg_set_radio_name();
     }
 
 #ifdef CONFIG_MENU
@@ -1039,7 +1015,7 @@ void create_menu_entry_addl_functions_screen(void)
 //#endif
 
     mn_submenu_add_98(wt_promtg, create_menu_entry_promtg_screen);
-    mn_submenu_add(wt_backlight, mn_backlight);
+    mn_submenu_add_98(wt_backlight, mn_backlight);
     mn_submenu_add_98(wt_micbargraph, create_menu_entry_micbargraph_screen);
     mn_submenu_add_98(wt_rbeep, create_menu_entry_rbeep_screen);
     mn_submenu_add(wt_bootopts, create_menu_entry_bootopts_screen);

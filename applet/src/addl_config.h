@@ -10,6 +10,9 @@
 #define FLASH_OFFSET_DMRID 0x2084
 #define FLASH_OFFSET_RNAME 0x20B0
 
+// Obvious note to newbies... these live in SPI...
+// This means they should never be reordered 
+// or the settings will get tangled up.
 typedef struct addl_config {
     uint8_t crc;
     uint8_t length;
@@ -33,6 +36,7 @@ extern void init_global_addl_config_hook(void);
 
 void cfg_fix_dmrid();
 void cfg_fix_radioname();
+void cfg_set_radio_name();
 
 void cfg_save();
 

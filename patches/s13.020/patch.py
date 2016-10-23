@@ -41,6 +41,7 @@ if __name__ == '__main__':
     patcher.setwstring(0x080d0b6c,
                        "MD380Tools Ver.");
 
+    #Fix some bad grammar
     patcher.setwstring(0x080f9a94,
                        "No Fix");
 
