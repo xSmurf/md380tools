@@ -15,6 +15,7 @@
 #include "addl_config.h"
 #include "radio_config.h"
 #include "syslog.h"
+#include "usersdb.h"
 
 addl_config_t global_addl_config;
 

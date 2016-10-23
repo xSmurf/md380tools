@@ -22,7 +22,7 @@ int progress = 0 ;
 #warning should be symbols, not sure if it is worth the effort
 #endif
 uint16_t *cntr2 = (void*)0x2001e844 ;
-uint8_t *mode3 = (void*)0x2001e892 ;
+uint8_t *mode3 = (void*)0x2001e892 ; // S: ??? 0x2001E97E
     
 // mode2
 // 1 idle
